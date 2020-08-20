@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: front
+  template:
+    metadata:
+      labels:
+        app: front
+    spec:
+
+      containers:
+      - name: tefter
+        image: ftakube-dev00.webmedia.int:5000/fta:$BUILD_NUMBER
+        ports:
+        - containerPort: 80
